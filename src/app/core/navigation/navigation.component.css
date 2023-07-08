@@ -1,0 +1,27 @@
+.nav-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+  height: 4em;
+}
+
+.nav-container ul {
+  display: flex;
+}
+
+.nav-container ul li {
+  display: block;
+}
+
+.nav-container ul li a {
+  text-decoration: none;
+  color: #fff;
+  padding: 1.5em;
+}
+
+.nav-container ul li:hover,
+.nav-container ul li a:hover {
+  background: #fff;
+  color: rgb(64, 103, 186);
+}
