@@ -1,17 +1,19 @@
 .nav-container {
   display: flex;
   flex-direction: row;
-  justify-content: flex-end;
+  justify-content: center;
   align-items: center;
   height: 4em;
 }
 
 .nav-container ul {
   display: flex;
+  gap: 2em;
 }
 
 .nav-container ul li {
   display: block;
+  
 }
 
 .nav-container ul li a {
