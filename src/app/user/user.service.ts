@@ -7,6 +7,29 @@ import { User } from '../types/user';
 })
 export class UserService {
   user: User | undefined;
+  USER_KEY = '[user]';
 
-  constructor() {}
+  get isLogged(): boolean {
+    return !!this.user;
+  }
+
+  constructor() {
+    try {
+      const lsUser = localStorage.getItem(this.USER_KEY) || '';
+    } catch (error) {
+      console.log(error);
+      this.user = undefined;
+    }
+  }
+
+  login(): void {
+    //
+
+    localStorage.setItem(this.USER_KEY, JSON.stringify(this.user));
+  }
+
+  logout(): void {
+    this.user = undefined;
+    localStorage.removeItem(this.USER_KEY);
+  }
 }
