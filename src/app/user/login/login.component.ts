@@ -22,6 +22,6 @@ export class LoginComponent {
   });
 
   login() {
-    console.log(this.form.value);
+    console.log('Form Data: ', this.form.value);
   }
 }

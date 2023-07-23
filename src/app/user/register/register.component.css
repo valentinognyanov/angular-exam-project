@@ -91,3 +91,10 @@ p.error {
   color: rgb(64, 103, 186);
   font-size: 1.2em;
 }
+
+p.hint {
+  margin: 0;
+  padding: 0;
+  padding-top: 1em;
+  color: #fff;
+}
