@@ -1,1 +1,56 @@
-<p>login works!</p>
+<div class="container">
+  <form class="register" [formGroup]="form" (ngSubmit)="login()">
+    <h2>Login</h2>
+    <div class="form-container">
+      <p class="field field-icon">
+        <label for="email">Email</label>
+        <input
+          type="text"
+          class="input-error"
+          name="email"
+          id="email"
+          formControlName="email"
+        />
+      </p>
+      <ng-container *ngIf="form.get('email')?.touched">
+        <p class="error" *ngIf="form.get('email')?.errors?.['required']">
+          Email is required!
+        </p>
+        <p
+          class="error"
+          *ngIf="form.get('email')?.errors?.['appEmailValidator']"
+        >
+          Email is not valid!
+        </p>
+      </ng-container>
+
+      <p class="field field-icon">
+        <label for="password">Password</label>
+        <input
+          type="password"
+          class="input-error"
+          name="password"
+          id="password"
+          formControlName="password"
+        />
+      </p>
+      <ng-container *ngIf="form.get('password')?.touched">
+        <p class="error" *ngIf="form.get('password')?.errors?.['minlength']">
+          Should be at least
+          {{ form.get('password')?.errors?.['minlength']['requiredLength'] }}
+          characters!
+        </p>
+        <p class="error" *ngIf="form.get('password')?.errors?.['required']">
+          Password is required!
+        </p>
+      </ng-container>
+
+      <button
+        [disabled]="form.invalid"
+        [style]="{ backgroundColor: form.invalid ? 'grey' : 'white' }"
+      >
+        Login
+      </button>
+    </div>
+  </form>
+</div>
