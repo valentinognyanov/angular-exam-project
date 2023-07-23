@@ -17,7 +17,31 @@
   align-items: center;
   padding: 2em;
   border-radius: 1.5em;
-  gap: 1em;
+  gap: 0.3em;
+}
+
+.form-container label {
+  color: #fff;
+  align-items: center;
+}
+
+.form-container input {
+  display: block;
+  border-radius: 2em;
+  padding-left: 0.5em;
+}
+
+.split-cont {
+  display: flex;
+  justify-content: space-between;
+  gap: 2em;
+}
+
+.split-cont .left {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 h2 {
@@ -51,7 +75,19 @@ p.error {
   background-color: rgba(238, 74, 74, 0.699); */
 }
 
-.input-error.ng-valid,
+.input-error.ng-invalid,
 .input-error.ng-pending {
-  border-left-color: green !important;
+  border: 1px solid red;
+}
+
+.form-container button:disabled {
+  color: rgba(16, 16, 16, 0.3);
+}
+
+.form-container button {
+  margin-top: 1em;
+  padding: 0.3em 2em;
+  border-radius: 1em;
+  color: rgb(64, 103, 186);
+  font-size: 1.2em;
 }

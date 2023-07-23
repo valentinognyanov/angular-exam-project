@@ -34,5 +34,7 @@ export class RegisterComponent {
     ),
   });
 
-  register() {}
+  register() {
+    console.log('Form Data: ', this.form.value);
+  }
 }
