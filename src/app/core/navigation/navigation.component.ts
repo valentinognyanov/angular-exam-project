@@ -8,6 +8,6 @@ import { UserService } from 'src/app/user/user.service';
 })
 export class NavigationComponent {
   constructor(private userService: UserService) {}
-
-  // this.userService
+  isLogged: Boolean = this.userService.isLogged;
+  username: string | undefined = this.userService.user?.username;
 }
