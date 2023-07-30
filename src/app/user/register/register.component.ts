@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+
+import { UserService } from '../user.service';
 
 import { appEmailValidator } from 'src/app/shared/validators/app-email.validator';
 import { matchPasswordsValidator } from 'src/app/shared/validators/match-passwords.validator';
@@ -12,7 +15,11 @@ import { DEFAULT_EMAIL_DOMAINS } from 'src/app/shared/constants';
   styleUrls: ['./register.component.css'],
 })
 export class RegisterComponent {
-  constructor(private fb: FormBuilder) {}
+  constructor(
+    private fb: FormBuilder,
+    private userService: UserService,
+    private router: Router
+  ) {}
 
   form = this.fb.group({
     username: ['', [Validators.required, Validators.minLength(5)]],
@@ -34,7 +41,26 @@ export class RegisterComponent {
     ),
   });
 
-  register() {
-    console.log('Form Data: ', this.form.value);
+  register(): void {
+    if (this.form.invalid) return;
+
+    const {
+      username,
+      fullName,
+      email,
+      phone,
+      address,
+      passGroup: { password, rePassword } = {},
+    } = this.form.value;
+    this.userService
+      .register(username!, fullName!, email!, phone!, address!, password!)
+      .subscribe(
+        (res) => {
+          this.router.navigate(['/']);
+        },
+        (error) => {
+          error.message;
+        }
+      );
   }
 }
