@@ -53,6 +53,7 @@ export class UserService {
   }
 
   logout(): void {
+    debugger;
     this.user = undefined;
     localStorage.removeItem(this.USER_KEY);
   }

@@ -10,4 +10,7 @@ export class NavigationComponent {
   constructor(private userService: UserService) {}
   isLogged: Boolean = this.userService.isLogged;
   username: string | undefined = this.userService.user?.username;
+  logout() {
+    this.userService.logout();
+  }
 }
