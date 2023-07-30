@@ -15,6 +15,7 @@ import { DEFAULT_EMAIL_DOMAINS } from 'src/app/shared/constants';
   styleUrls: ['./register.component.css'],
 })
 export class RegisterComponent {
+  private USER_KEY = 'user';
   constructor(
     private fb: FormBuilder,
     private userService: UserService,
@@ -54,13 +55,9 @@ export class RegisterComponent {
     } = this.form.value;
     this.userService
       .register(username!, fullName!, email!, phone!, address!, password!)
-      .subscribe(
-        (res) => {
-          this.router.navigate(['/']);
-        },
-        (error) => {
-          error.message;
-        }
-      );
+      .subscribe((res) => {
+        localStorage.setItem(this.USER_KEY, JSON.stringify(res));
+        this.router.navigate(['/']);
+      });
   }
 }
