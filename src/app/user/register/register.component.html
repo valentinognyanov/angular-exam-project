@@ -4,7 +4,7 @@
     <div class="form-container">
       <div class="split-cont">
         <div class="left">
-          <p class="field field-icon">
+          <!-- <p class="field field-icon">
             <label for="username">Username</label>
             <input
               type="text"
@@ -26,7 +26,7 @@
               {{ form.get('username')?.errors?.['minlength']['requiredLength'] }}
               characters!
             </p>
-          </ng-container>
+          </ng-container> -->
 
           <p class="field field-icon">
             <label for="fullName">Full Name</label>
@@ -76,7 +76,7 @@
         </div>
 
         <div class="right">
-          <p class="field field-icon">
+          <!-- <p class="field field-icon">
             <label for="phone">Phone</label>
             <input
               type="number"
@@ -95,8 +95,9 @@
               {{ form.get('phone')?.errors?.['minlength']['requiredLength'] }}
               characters!
             </p>
-          </ng-container>
-          <p class="field field-icon">
+          </ng-container> -->
+
+          <!-- <p class="field field-icon">
             <label for="address">Address</label>
             <input
               type="text"
@@ -115,7 +116,8 @@
               {{ form.get('address')?.errors?.['minlength']['requiredLength'] }}
               characters!
             </p>
-          </ng-container>
+          </ng-container> -->
+
           <ng-container formGroupName="passGroup">
             <p class="field field-icon">
               <label for="password">Password</label>
