@@ -1,9 +1,11 @@
 import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 import { appEmailValidator } from 'src/app/shared/validators/app-email.validator';
 
 import { DEFAULT_EMAIL_DOMAINS } from 'src/app/shared/constants';
+import { UserService } from '../user.service';
 
 @Component({
   selector: 'app-login',
@@ -11,7 +13,11 @@ import { DEFAULT_EMAIL_DOMAINS } from 'src/app/shared/constants';
   styleUrls: ['./login.component.css'],
 })
 export class LoginComponent {
-  constructor(private fb: FormBuilder) {}
+  constructor(
+    private fb: FormBuilder,
+    private userService: UserService,
+    private router: Router
+  ) {}
 
   form = this.fb.group({
     email: [
@@ -22,6 +28,12 @@ export class LoginComponent {
   });
 
   login() {
-    console.log('Form Data: ', this.form.value);
+    if (this.form.invalid) return;
+
+    const { email, password } = this.form.value;
+
+    this.userService.login(email!, password!).subscribe(() => {
+      this.router.navigate(['/']);
+    });
   }
 }
