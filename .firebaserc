@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "angular-exam-project-87c3a": {
+      "hosting": {
+        "my-exam-project": [
+          "angular-exam-project-87c3a"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "angular-exam-project-87c3a"
+  }
+}
