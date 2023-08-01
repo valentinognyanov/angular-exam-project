@@ -1,64 +1,47 @@
-import { Injectable, OnDestroy } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-
-import { Observable } from 'rxjs';
-
-import { User } from '../types/user';
-import { environment } from 'src/environments/environments';
+import { Injectable } from '@angular/core';
+import {
+  Auth,
+  signInWithEmailAndPassword,
+  createUserWithEmailAndPassword,
+  authState,
+  updateProfile,
+} from '@angular/fire/auth';
+import { getAuth } from 'firebase/auth';
+import { Observable, from, switchMap } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class UserService {
-  user: User | undefined;
-  private USER_KEY = 'user';
-  private apiUrl = environment.apiUrl;
+  currentUser$ = authState(this.auth);
 
   get isLogged(): boolean {
-    return !!this.user;
+    return !!this.currentUser$;
   }
 
-  constructor(private http: HttpClient) {
-    try {
-      const lsUser = localStorage.getItem(this.USER_KEY) || '';
-      this.user = JSON.parse(lsUser);
-    } catch (error) {
-      this.user = undefined;
-    }
+  constructor(private auth: Auth) {}
+
+  register(fullName: string, email: string, password: string) {
+    return from(
+      createUserWithEmailAndPassword(this.auth, email, password)
+    ).pipe(
+      switchMap(({ user }) => updateProfile(user, { displayName: fullName }))
+    );
   }
 
-  register(
-    username: string,
-    fullName: string,
-    email: string,
-    phone: string,
-    address: string,
-    password: string
-  ): Observable<any> {
-    return this.http.post<User>(`${this.apiUrl}/users/register`, {
-      username,
-      fullName,
-      email,
-      phone,
-      address,
-      password,
-    });
+  login(email: string, password: string) {
+    return from(signInWithEmailAndPassword(this.auth, email, password));
   }
 
-  login(email: string, password: string): Observable<any> {
-    return this.http.post<User>(`${this.apiUrl}/users/login`, {
-      email,
-      password,
-    });
-  }
-
-  logout(): void {
-    debugger;
-    this.user = undefined;
-    localStorage.removeItem(this.USER_KEY);
+  logout(): Observable<any> {
+    return from(this.auth.signOut());
   }
 
   getUser() {
-    return this.user;
+    const auth = getAuth();
+    const currUser = auth.currentUser;
+    console.log(currUser);
+
+    return currUser;
   }
 }
