@@ -23,14 +23,14 @@ export class RegisterComponent {
   ) {}
 
   form = this.fb.group({
-    username: ['', [Validators.required, Validators.minLength(5)]],
+    // username: ['', [Validators.required, Validators.minLength(5)]],
     fullName: ['', [Validators.required]],
     email: [
       '',
       [Validators.required, appEmailValidator(DEFAULT_EMAIL_DOMAINS)],
     ],
-    phone: ['', [Validators.required, Validators.minLength(9)]],
-    address: ['', [Validators.required, Validators.minLength(6)]],
+    // phone: ['', [Validators.required, Validators.minLength(9)]],
+    // address: ['', [Validators.required, Validators.minLength(6)]],
     passGroup: this.fb.group(
       {
         password: ['', [Validators.required, Validators.minLength(5)]],
@@ -45,19 +45,26 @@ export class RegisterComponent {
   register(): void {
     if (this.form.invalid) return;
 
-    const {
-      username,
-      fullName,
-      email,
-      phone,
-      address,
-      passGroup: { password, rePassword } = {},
-    } = this.form.value;
-    this.userService
-      .register(username!, fullName!, email!, phone!, address!, password!)
-      .subscribe((res) => {
-        localStorage.setItem(this.USER_KEY, JSON.stringify(res));
+    const { fullName, email, passGroup: { password } = {} } = this.form.value;
+    this.userService.register(fullName!, email!, password!).subscribe(
+      () => {
         this.router.navigate(['/']);
-      });
+      },
+      (error) => console.error(error)
+    );
+    // this.userService
+    //   .register(username!, fullName!, email!, phone!, address!, password!)
+    //   .subscribe(
+    //     (res) => {
+    //       console.log({ res });
+    //       this.form.reset();
+
+    //       localStorage.setItem(this.USER_KEY, JSON.stringify(res));
+    //       this.router.navigate(['/']);
+    //     },
+    //     (error) => {
+    //       console.log(error);
+    //     }
+    //   );
   }
 }
