@@ -13,13 +13,28 @@
   border-radius: 3em;
   width: 40%;
   margin: 0 auto;
+  border: 1px solid rgb(64, 103, 186);
+  box-shadow: 5px 5px 5px rgb(70, 70, 70);
 }
 
 .profile-container p {
-  border: 1px solid blue;
   border-radius: 1em;
   padding: 1em;
   margin: 0;
   background: #fff;
   color: rgb(64, 103, 186);
+}
+
+.edit-btn a {
+  display: flex;
+  border: 1px solid #000;
+  text-decoration: none;
+  color: white;
+  background: #000;
+  padding: 0.6em;
+  border-radius: 0.3em;
+}
+
+.edit-btn a:hover {
+  background: rgb(64, 103, 186);
 }
