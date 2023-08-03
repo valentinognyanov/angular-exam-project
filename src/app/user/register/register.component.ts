@@ -15,7 +15,8 @@ import { DEFAULT_EMAIL_DOMAINS } from 'src/app/shared/constants';
   styleUrls: ['./register.component.css'],
 })
 export class RegisterComponent {
-  private USER_KEY = 'user';
+  // private USER_KEY = 'user';
+
   constructor(
     private fb: FormBuilder,
     private userService: UserService,
