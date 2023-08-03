@@ -1,0 +1,50 @@
+.profile-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1em;
+  color: white;
+  background: linear-gradient(
+    0deg,
+    rgba(64, 103, 186, 1) 0%,
+    rgba(196, 196, 196, 1) 100%
+  );
+  border-radius: 3em;
+  width: 40%;
+  margin: 0 auto;
+  border: 1px solid rgb(64, 103, 186);
+  box-shadow: 5px 5px 5px rgb(70, 70, 70);
+}
+
+.profile-container p {
+  border-radius: 1em;
+  padding: 1em;
+  margin: 0;
+  background: #fff;
+  color: rgb(64, 103, 186);
+}
+
+.edit-btn button {
+  display: flex;
+  border: 1px solid #000;
+  text-decoration: none;
+  color: white;
+  background: #000;
+  padding: 0.6em;
+  border-radius: 0.3em;
+  cursor: pointer;
+}
+
+.edit-btn button:hover {
+  background: rgb(64, 103, 186);
+}
+
+p.error {
+  text-align: left;
+  border-radius: 0.3em;
+  color: red;
+  padding-top: 0;
+  padding: 0;
+  margin: 0;
+}

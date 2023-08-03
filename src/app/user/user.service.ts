@@ -16,12 +16,14 @@ export class UserService {
   currentUser$ = authState(this.auth);
 
   get isLogged(): boolean {
-    return !!this.currentUser$;
+    const user = getAuth();
+    const currUser = user.currentUser;
+    return !!currUser;
   }
 
-  constructor(private auth: Auth) {}
+  constructor(public auth: Auth) {}
 
-  register(fullName: string, email: string, password: string) {
+  register(fullName: string, email: string, password: string): Observable<any> {
     return from(
       createUserWithEmailAndPassword(this.auth, email, password)
     ).pipe(
@@ -29,18 +31,20 @@ export class UserService {
     );
   }
 
-  login(email: string, password: string) {
+  login(email: string, password: string): Observable<any> {
     return from(signInWithEmailAndPassword(this.auth, email, password));
   }
 
-  logout(): Observable<any> {
-    return from(this.auth.signOut());
+  async logout() {
+    return this.auth.signOut().then(() => {
+      window.alert('Logged Out !');
+    });
   }
 
   getUser() {
     const auth = getAuth();
     const currUser = auth.currentUser;
-    console.log(currUser);
+    // console.log(currUser);
 
     return currUser;
   }

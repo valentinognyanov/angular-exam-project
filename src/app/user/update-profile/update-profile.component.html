@@ -1,0 +1,46 @@
+<form class="register" [formGroup]="form" (ngSubmit)="updateProfile()">
+  <div class="profile-container">
+    <p class="field field-icon">
+      <label for="fullName">Full Name </label>
+      <input
+        type="text"
+        class="input-error"
+        name="fullName"
+        id="fullName"
+        formControlName="fullName"
+      />
+    </p>
+    <ng-container *ngIf="form.get('fullName')?.touched">
+      <p class="error" *ngIf="form.get('fullName')?.errors?.['required']">
+        Full Name is required!
+      </p>
+      <p class="error" *ngIf="form.get('fullName')?.errors?.['minlength']">
+        Should be at least
+        {{ form.get('fullName')?.errors?.['minlength']['requiredLength'] }}
+        characters!
+      </p>
+    </ng-container>
+
+    <p class="field field-icon">
+      <label for="email">Email </label>
+      <input
+        type="text"
+        class="input-error"
+        name="email"
+        id="email"
+        formControlName="email"
+      />
+    </p>
+    <ng-container *ngIf="form.get('email')?.touched">
+      <p class="error" *ngIf="form.get('email')?.errors?.['required']">
+        Email is required!
+      </p>
+      <p class="error" *ngIf="form.get('email')?.errors?.['appEmailValidator']">
+        Email is not valid!
+      </p>
+    </ng-container>
+    <div class="edit-btn">
+      <button>Save</button>
+    </div>
+  </div>
+</form>
