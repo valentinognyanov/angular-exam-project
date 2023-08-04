@@ -1,10 +1,5 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import {
-  canActivate,
-  redirectUnauthorizedTo,
-  redirectLoggedInTo,
-} from '@angular/fire/auth-guard';
 
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
@@ -12,34 +7,33 @@ import { ProfileComponent } from './profile/profile.component';
 import { HomeComponent } from '../home/home.component';
 import { UpdateProfileComponent } from './update-profile/update-profile.component';
 
-const redirectToLogin = () => redirectUnauthorizedTo(['login']);
-const redirectToHome = () => redirectLoggedInTo(['home']);
+import { IsLoggedOutGuard } from '../guards/is-logged-out.guard';
+import { IsLoggedInGuard } from '../guards/is-logged-in.guard';
 
 const routes: Routes = [
   {
     path: 'login',
     component: LoginComponent,
-    ...canActivate(redirectToHome),
+    canActivate: [IsLoggedOutGuard],
   },
   {
     path: 'register',
     component: RegisterComponent,
-    ...canActivate(redirectToHome),
+    canActivate: [IsLoggedOutGuard],
   },
   {
     path: 'profile',
     component: ProfileComponent,
-    ...canActivate(redirectToLogin),
+    canActivate: [IsLoggedInGuard],
   },
   {
     path: 'logout',
     component: HomeComponent,
-    ...canActivate(redirectToHome),
   },
   {
     path: 'update-profile',
     component: UpdateProfileComponent,
-    ...canActivate(redirectToLogin),
+    canActivate: [IsLoggedInGuard],
   },
 ];
 
