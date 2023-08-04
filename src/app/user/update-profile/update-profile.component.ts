@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
+import { Form, FormBuilder, Validators } from '@angular/forms';
 
 import { UserService } from '../user.service';
 
@@ -22,5 +22,7 @@ export class UpdateProfileComponent {
     ],
   });
 
-  updateProfile() {}
+  updateProfile() {
+    //
+  }
 }
