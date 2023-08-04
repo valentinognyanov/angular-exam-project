@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 
 import { appEmailValidator } from 'src/app/shared/validators/app-email.validator';
 
-import { DEFAULT_EMAIL_DOMAINS } from 'src/app/shared/constants';
+import { DEFAULT_EMAIL_DOMAINS, USER_KEY } from 'src/app/shared/constants';
 import { UserService } from '../user.service';
 
 @Component({
@@ -27,13 +27,17 @@ export class LoginComponent {
     password: ['', [Validators.required]],
   });
 
-  login() {
+  async login() {
     if (this.form.invalid) return;
 
     const { email, password } = this.form.value;
 
-    this.userService.login(email!, password!).subscribe(() => {
-      this.router.navigate(['/']);
-    });
+    await this.userService.login(email!, password!);
+
+    if (localStorage.getItem(USER_KEY)) this.router.navigate(['/']);
+
+    // this.userService.login(email!, password!).subscribe(() => {
+    //   this.router.navigate(['/']);
+    // });
   }
 }
