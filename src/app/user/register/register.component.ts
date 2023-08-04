@@ -1,13 +1,14 @@
 import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { AngularFirestore } from '@angular/fire/compat/firestore';
 
 import { UserService } from '../user.service';
 
 import { appEmailValidator } from 'src/app/shared/validators/app-email.validator';
 import { matchPasswordsValidator } from 'src/app/shared/validators/match-passwords.validator';
 
-import { DEFAULT_EMAIL_DOMAINS } from 'src/app/shared/constants';
+import { DEFAULT_EMAIL_DOMAINS, USER_KEY } from 'src/app/shared/constants';
 
 @Component({
   selector: 'app-register',
@@ -15,12 +16,12 @@ import { DEFAULT_EMAIL_DOMAINS } from 'src/app/shared/constants';
   styleUrls: ['./register.component.css'],
 })
 export class RegisterComponent {
-  // private USER_KEY = 'user';
 
   constructor(
     private fb: FormBuilder,
     private userService: UserService,
-    private router: Router
+    private router: Router,
+    private angularFirestore: AngularFirestore
   ) {}
 
   form = this.fb.group({
@@ -43,16 +44,19 @@ export class RegisterComponent {
     ),
   });
 
-  register(): void {
+  async register() {
     if (this.form.invalid) return;
 
     const { fullName, email, passGroup: { password } = {} } = this.form.value;
-    this.userService.register(fullName!, email!, password!).subscribe(
-      () => {
-        this.router.navigate(['/']);
-      },
-      (error) => console.error(error)
-    );
+
+    await this.userService.register(fullName!, email!, password!);
+
+    if (localStorage.getItem(USER_KEY)) this.router.navigate(['/']);
+
+    this.angularFirestore
+      .collection('users')
+      .add({ fullName, email, password });
+
     // this.userService
     //   .register(username!, fullName!, email!, phone!, address!, password!)
     //   .subscribe(
