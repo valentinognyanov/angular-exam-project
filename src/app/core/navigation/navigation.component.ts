@@ -7,9 +7,5 @@ import { UserService } from 'src/app/user/user.service';
   styleUrls: ['./navigation.component.css'],
 })
 export class NavigationComponent {
-  constructor(public userService: UserService) {
-    console.log(this.userService.currentUser$);
-  }
-
-  isLogged: Boolean = !!this.userService.currentUser$;
+  constructor(public userService: UserService) {}
 }
