@@ -1,1 +1,17 @@
-<p>news works!</p>
+<div class="news-container">
+  <h1 *ngIf="news && news.length > 0">All Sports News</h1>
+
+  <div class="cards-container">
+    <ng-container *ngIf="news && news.length > 0">
+      <ng-container *ngFor="let currNews of news">
+        <div class="news-card">
+          <h3>{{ currNews.title }}</h3>
+          <p>Author: {{ currNews.author }}</p>
+          <button routerLink="/news/{{currNews.id}}">Details</button>
+        </div>
+      </ng-container>
+    </ng-container>
+  </div>
+
+  <h1 *ngIf="news && news.length === 0">No posts yet</h1>
+</div>
