@@ -4,6 +4,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { NewsRoutingModule } from './news-routing.module';
 import { SharedModule } from '../shared/shared.module';
+import { UserModule } from '../user/user.module';
 
 import { UploadNewsComponent } from './upload-news/upload-news.component';
 
@@ -15,6 +16,7 @@ import { UploadNewsComponent } from './upload-news/upload-news.component';
     FormsModule,
     ReactiveFormsModule,
     SharedModule,
+    UserModule,
   ],
 })
 export class NewsModule {}
