@@ -17,6 +17,7 @@ import { HomeComponent } from './home/home.component';
 import { AboutComponent } from './about/about.component';
 
 import { UserService } from './user/user.service';
+import { NewsService } from './news/news.service';
 
 import { environment } from '../environments/environment';
 import { NewsComponent } from './news/news/news.component';
@@ -26,18 +27,18 @@ import { NewsComponent } from './news/news/news.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    provideFirebaseApp(() => initializeApp(environment.firebase)),
+    provideAuth(() => getAuth()),
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFirestoreModule,
     HttpClientModule,
     CoreModule,
     UserModule,
     NewsModule,
     BrowserAnimationsModule,
-    provideFirebaseApp(() => initializeApp(environment.firebase)),
-    provideAuth(() => getAuth()),
-    AngularFireModule.initializeApp(environment.firebase),
-    AngularFirestoreModule,
   ],
 
-  providers: [UserService],
+  providers: [UserService, NewsService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
