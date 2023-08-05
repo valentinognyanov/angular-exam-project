@@ -1,1 +1,92 @@
-<p>upload-news works!</p>
+<div class="container">
+  <form [formGroup]="uploadNewsForm" (ngSubmit)="onSubmit()">
+    <h2>Upload News</h2>
+    <div class="form-container">
+      <p class="field field-icon">
+        <label for="title">Title</label>
+        <input
+          type="text"
+          class="input-error"
+          name="title"
+          id="title"
+          formControlName="title"
+        />
+      </p>
+      <ng-container *ngIf="uploadNewsForm.get('title')?.touched">
+        <p
+          class="error"
+          *ngIf="uploadNewsForm.get('title')?.errors?.['required']"
+        >
+          Title is required!
+        </p>
+        <p
+          class="error"
+          *ngIf="uploadNewsForm.get('title')?.errors?.['minlength']"
+        >
+          Should be at least
+          {{ uploadNewsForm.get('title')?.errors?.['minlength']['requiredLength'] }}
+          characters!
+        </p>
+      </ng-container>
+
+      <p class="field field-icon">
+        <label for="imageUrl">Image Url</label>
+        <input
+          type="text"
+          class="input-error"
+          name="imageUrl"
+          id="imageUrl"
+          formControlName="imageUrl"
+        />
+      </p>
+      <ng-container *ngIf="uploadNewsForm.get('imageUrl')?.touched">
+        <p
+          class="error"
+          *ngIf="uploadNewsForm.get('imageUrl')?.errors?.['required']"
+        >
+          Image URL is required!
+        </p>
+      </ng-container>
+
+      <p class="field field-icon">
+        <label for="content">Content</label>
+        <input
+          type="text"
+          class="textarea input-error"
+          name="content"
+          id="content"
+          formControlName="content"
+        />
+      </p>
+      <ng-container *ngIf="uploadNewsForm.get('content')?.touched">
+        <p
+          class="error"
+          *ngIf="uploadNewsForm.get('content')?.errors?.['required']"
+        >
+          The content is required!
+        </p>
+        <p
+          class="error"
+          *ngIf="uploadNewsForm.get('content')?.errors?.['minlength']"
+        >
+          Should be at least
+          {{ uploadNewsForm.get('content')?.errors?.['minlength']['requiredLength'] }}
+          characters!
+        </p>
+      </ng-container>
+
+      <div class="upload-form-btns">
+        <button
+          [disabled]="uploadNewsForm.invalid"
+          [style]="{
+            backgroundColor: uploadNewsForm.invalid ? 'grey' : 'white'
+          }"
+        >
+          Publish
+        </button>
+
+        <button type="reset">Cancel</button>
+      </div>
+    </div>
+  </form>
+</div>
