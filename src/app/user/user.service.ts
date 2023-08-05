@@ -18,6 +18,10 @@ import { USER_KEY } from '../shared/constants';
 export class UserService {
   currentUser$ = authState(this.auth);
 
+  get getUser(): string {
+    return localStorage.getItem(USER_KEY) as string;
+  }
+
   get isLogged(): boolean {
     return !!localStorage.getItem(USER_KEY);
   }
@@ -74,5 +78,4 @@ export class UserService {
 
   //   return currUser;
   // }
-  getUser() {}
 }

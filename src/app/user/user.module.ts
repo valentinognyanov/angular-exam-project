@@ -3,15 +3,20 @@ import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { UserRoutingModule } from './user-routing.module';
+import { SharedModule } from '../shared/shared.module';
 
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { ProfileComponent } from './profile/profile.component';
-import { SharedModule } from '../shared/shared.module';
 import { UpdateProfileComponent } from './update-profile/update-profile.component';
 
 @NgModule({
-  declarations: [LoginComponent, RegisterComponent, ProfileComponent, UpdateProfileComponent],
+  declarations: [
+    LoginComponent,
+    RegisterComponent,
+    ProfileComponent,
+    UpdateProfileComponent,
+  ],
   imports: [
     CommonModule,
     UserRoutingModule,
