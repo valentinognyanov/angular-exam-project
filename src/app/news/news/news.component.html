@@ -4,7 +4,7 @@
   <div class="cards-container">
     <ng-container *ngIf="news && news.length > 0">
       <ng-container *ngFor="let currNews of news">
-        <div class="news-card">
+        <div class="news-card" [style.background]="'url(' + currNews.imageUrl + ')'" [style.background.size]="'center'">
           <h3>{{ currNews.title }}</h3>
           <p>Author: {{ currNews.author }}</p>
           <button routerLink="/news/{{currNews.id}}">More details</button>
@@ -13,5 +13,5 @@
     </ng-container>
   </div>
 
-  <h1 *ngIf="news && news.length === 0">No posts yet</h1>
+  <h1 *ngIf="news && news.length === 0">There is no news</h1>
 </div>
