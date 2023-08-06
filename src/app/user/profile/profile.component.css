@@ -51,8 +51,11 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  align-items: center;
   gap: 0.5em;
-  padding: 0.5em;
+  padding: 0.7em;
+  border: 2px solid #fff;
+  border-radius: 2.3em;
 }
 
 .btns button {
