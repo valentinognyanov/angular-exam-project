@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 
-import { News } from '../types/news';
+import { News } from '../types/news.model';
 
 @Injectable({
   providedIn: 'root',
