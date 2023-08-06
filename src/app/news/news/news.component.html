@@ -4,10 +4,11 @@
   <div class="cards-container">
     <ng-container *ngIf="news && news.length > 0">
       <ng-container *ngFor="let currNews of news">
-        <div class="news-card" [style.background]="'url(' + currNews.imageUrl + ')'" [style.background.size]="'center'">
+        <div class="news-new-card">
+          <img src="{{ currNews.imageUrl }}" alt="" />
           <h3>{{ currNews.title }}</h3>
           <p>Author: {{ currNews.author }}</p>
-          <button routerLink="/news/{{currNews.id}}">More details</button>
+          <button routerLink="/news/{{ currNews.id }}">More details</button>
         </div>
       </ng-container>
     </ng-container>
