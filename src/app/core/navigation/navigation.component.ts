@@ -3,7 +3,7 @@ import { AngularFirestore } from '@angular/fire/compat/firestore';
 
 import { UserService } from 'src/app/user/user.service';
 
-import { User } from 'src/app/types/user';
+import { User } from 'src/app/types/user.model';
 
 @Component({
   selector: 'app-navigation',
@@ -11,5 +11,8 @@ import { User } from 'src/app/types/user';
   styleUrls: ['./navigation.component.css'],
 })
 export class NavigationComponent {
-  constructor(public userService: UserService) {}
+  userId: string;
+  constructor(public userService: UserService) {
+    this.userId = JSON.parse(userService.getUser).uid;
+  }
 }
