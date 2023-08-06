@@ -1,0 +1,82 @@
+<section *ngIf="news">
+  <div class="centered">
+    <div class="card">
+      <header>
+        <h1>{{ news.title }}</h1>
+      </header>
+      <p>{{ news.content }}</p>
+    </div>
+    <ng-container *ngIf="isLogged && news.published">
+      <ng-container *ngFor="let user of users">
+        <ng-container *ngIf="user.email === news.author">
+          <p>
+            Published by
+            <a routerLink="/user/{{ user.id }}">{{ news.author }}</a>
+          </p>
+          <p>on {{ news.published.toDate() | date : "medium" }}</p>
+        </ng-container>
+      </ng-container>
+    </ng-container>
+
+    <ng-container *ngIf="!isLogged && news.published">
+      <p>Published by {{ news.author }}</p>
+      <p>on {{ news.published.toDate() | date : "medium" }}</p>
+    </ng-container>
+
+    <ng-container *ngIf="news.upvotes || news.downvotes">
+      <p>
+        <ng-container *ngIf="news.upvotes">
+          <ng-container *ngIf="news.upvotes?.length === 1">
+            1 upvote
+          </ng-container>
+          <ng-container *ngIf="news.upvotes?.length > 1">
+            {{ news.upvotes?.length }} upvotes
+          </ng-container>
+        </ng-container>
+
+        <ng-container
+          *ngIf="
+            news.upvotes &&
+            news.upvotes?.length > 0 &&
+            news.downvotes &&
+            news.downvotes?.length > 0
+          "
+          >&</ng-container
+        >
+
+        <ng-container *ngIf="news.downvotes">
+          <ng-container *ngIf="news.downvotes?.length === 1">
+            1 downvote
+          </ng-container>
+          <ng-container *ngIf="news.downvotes?.length > 1">
+            {{ news.downvotes?.length }} downvotes
+          </ng-container>
+        </ng-container>
+      </p>
+    </ng-container>
+
+    <ng-container *ngIf="currUserEmail">
+      <ng-container *ngFor="let user of users">
+        <ng-container
+          *ngIf="news.author === currUserEmail && user.email === currUserEmail"
+        >
+          <div class="example-button-row">
+            <button (click)="updateNews()">Update</button>
+            <button (click)="deleteNews(user.id)">Delete</button>
+          </div>
+        </ng-container>
+      </ng-container>
+
+      <ng-container *ngIf="news.author !== currUserEmail">
+        <ng-container *ngFor="let user of users">
+            <ng-container *ngIf="user.email === currUserEmail">
+                <div class="example-button-row">
+                    <button (click)="upvoteNews(user.id)" [disabled]="likedByUser">Upvote</button>
+                    <button (click)="downvoteNews(user.id)" [disabled]="dislikedByUser">Downvote</button>
+                </div>
+            </ng-container>
+        </ng-container>
+      </ng-container>
+    </ng-container>
+  </div>
+</section>
