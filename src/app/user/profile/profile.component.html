@@ -1,3 +1,13 @@
 <div class="profile-container">
-<p>Hello</p>
+  <ng-container *ngFor="let user of users">
+    <ng-container>
+      <h1>
+        {{
+          authorEmail.split("").shift().toUpperCase() +
+            authorEmail.split("@")[0].substring(1)
+        }}'s profile
+      </h1>
+    </ng-container>
+  </ng-container>
+  <h1>hello</h1>
 </div>

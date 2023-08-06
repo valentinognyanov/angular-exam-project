@@ -4,7 +4,7 @@ import { AngularFirestore } from '@angular/fire/compat/firestore';
 
 import { NewsService } from 'src/app/news/news.service';
 
-import { News } from 'src/app/types/news';
+import { News } from 'src/app/types/news.model';
 
 import { USER_KEY } from 'src/app/shared/constants';
 
@@ -25,10 +25,10 @@ export class ProfileComponent {
     private route: ActivatedRoute
   ) {
     this.newsService.getAllNews().subscribe((res) => {
-      this.news = res.map((p) => {
+      this.news = res.map((n) => {
         return {
-          id: p.payload.doc.id,
-          ...(p.payload.doc.data() as {}),
+          id: n.payload.doc.id,
+          ...(n.payload.doc.data() as {}),
         } as News;
       });
     });
@@ -40,8 +40,7 @@ export class ProfileComponent {
         this.users = users;
       });
 
-    const userId: any = this.route.parent?.snapshot.paramMap.get('id');
-    debugger;
+    const userId: any = this.route.snapshot.paramMap.get('id');
 
     this.angularFirestore
       .collection('users')
