@@ -107,7 +107,7 @@ export class DetailsNewsComponent {
           }
         }
       });
-      this.router.navigate(['']);
+      this.router.navigate(['news']);
 
       return this.newsService.deleteNews(newsId);
     }

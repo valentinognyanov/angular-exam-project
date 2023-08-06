@@ -1,0 +1,71 @@
+.card header h1 {
+  color: rgb(64, 103, 186);
+  background-color: #fff;
+  text-align: center;
+  border-radius: 2em;
+  box-shadow: 5px 5px 5px rgb(70, 70, 70);
+}
+
+.img-content {
+    display: flex;
+}
+
+.img-content img {
+    max-width: 45em;
+    max-height: 50em;
+    border-radius: 2em;
+}
+
+.img-content p {
+    display: block;
+    padding: 1em;
+}
+
+.u-d-btns {
+    display: flex;
+    justify-content: flex-end;
+    padding-right: 5em;
+    gap: 1em;
+}
+
+.u-d-display {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    padding-right: 5em;
+}
+
+.u-d-display p {
+    display: flex;
+    gap: 0.5em;
+}
+
+.example-button-row {
+    display: flex;
+    gap: 1em;
+}
+
+.example-button-row button svg {
+    width: 2em;
+    fill: rgb(64, 103, 186);
+}
+.up-display svg,
+.down-display svg {
+    width: 1em;
+}
+
+.up-display,
+.down-display {
+    display: flex;
+    gap: 0.5em;
+    font-size: 1.5em;
+}
+
+.example-button-row button {
+    background-color: rgba(255, 255, 255, 0);
+    cursor: pointer;
+    border: none;
+}
+.example-button-row button:disabled svg {
+    fill: grey;
+}
