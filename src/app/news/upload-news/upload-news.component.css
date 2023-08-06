@@ -40,8 +40,13 @@ h2 {
   box-shadow: 5px 5px 5px rgb(70, 70, 70);
 }
 
-input {
+input, textarea {
   border-radius: 0.4em;
+}
+
+div.content-label {
+  display: flex;
+  flex-direction: column;
 }
 
 p.error {
@@ -62,9 +67,20 @@ p.error {
   box-shadow: 0 5px 10px rgb(204, 204, 204);
   background-color: rgba(238, 74, 74, 0.699); */
 }
+.upload-form-btns {
+  display: flex;
+  gap: 1em;
+}
 
-input.textarea {
-  height: 200px;
-  width: 300px;
-  word-break: break-word;
+.upload-form-btns button {
+  border-radius: 1em;
+  font-size: 1.2em;
+  color: rgb(64, 103, 186);
+  cursor: pointer;
+  padding: 0.4em;
+}
+
+.upload-form-btns button:hover {
+  background-color: rgb(64, 103, 186);
+  color: #fff;
 }

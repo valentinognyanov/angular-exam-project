@@ -1,5 +1,5 @@
 <div class="container">
-  <form [formGroup]="uploadNewsForm" (ngSubmit)="onSubmit()">
+  <form [formGroup]="uploadNewsForm">
     <h2>Upload News</h2>
     <div class="form-container">
       <p class="field field-icon">
@@ -48,16 +48,18 @@
         </p>
       </ng-container>
 
-      <p class="field field-icon">
-        <label for="content">Content</label>
-        <input
+      <div class="field field-icon content-label">
+        <label class="content-label" for="content">Content</label>
+        <textarea
+          cols="30"
+          rows="10"
           type="text"
           class="textarea input-error"
           name="content"
           id="content"
           formControlName="content"
-        />
-      </p>
+        ></textarea>
+      </div>
       <ng-container *ngIf="uploadNewsForm.get('content')?.touched">
         <p
           class="error"
@@ -74,19 +76,23 @@
           characters!
         </p>
       </ng-container>
+      <ng-container *ngFor="let user of users">
+        <ng-container *ngIf="user.email === currentUserEmail">
+          <div class="upload-form-btns">
+            <button
+              (click)="onSubmit(user.id)"
+              [disabled]="uploadNewsForm.invalid"
+              [style]="{
+                backgroundColor: uploadNewsForm.invalid ? 'grey' : 'white'
+              }"
+            >
+              Publish
+            </button>
 
-      <div class="upload-form-btns">
-        <button
-          [disabled]="uploadNewsForm.invalid"
-          [style]="{
-            backgroundColor: uploadNewsForm.invalid ? 'grey' : 'white'
-          }"
-        >
-          Publish
-        </button>
-
-        <button type="reset">Cancel</button>
-      </div>
+            <button type="reset">Cancel</button>
+          </div>
+        </ng-container>
+      </ng-container>
     </div>
   </form>
 </div>

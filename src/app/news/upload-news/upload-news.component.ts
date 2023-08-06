@@ -16,7 +16,7 @@ import { USER_KEY } from 'src/app/shared/constants';
   styleUrls: ['./upload-news.component.css'],
 })
 export class UploadNewsComponent {
-  getUser: string = this.userService.getUser;
+  getUser: string = localStorage.getItem(USER_KEY) as string;
   email: string = JSON.parse(this.getUser).email;
   userId: string = JSON.parse(this.getUser).uid;
   upvotes: string[] = [];
@@ -33,7 +33,7 @@ export class UploadNewsComponent {
     public router: Router,
     public angularFirestore: AngularFirestore
   ) {
-    if (userService.isLogged) {
+    if (this.isLogged) {
       this.currentUserEmail = JSON.parse(
         localStorage.getItem(USER_KEY) as any
       ).email;
@@ -61,6 +61,10 @@ export class UploadNewsComponent {
           } as User;
         });
       });
+  }
+
+  get isLogged() {
+    return !!localStorage.getItem(USER_KEY);
   }
 
   uploadNews(sNews: News, userId: string) {
@@ -107,7 +111,8 @@ export class UploadNewsComponent {
     });
   }
 
-  onSubmit() {
+  onSubmit(uid: any) {
+    if (uid !== undefined) this.uid = uid;
     this.uploadNews(this.uploadNewsForm.value, this.uid);
     this.router.navigate(['']);
   }
