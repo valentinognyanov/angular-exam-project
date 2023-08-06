@@ -13,6 +13,6 @@ import { User } from 'src/app/types/user.model';
 export class NavigationComponent {
   userId: string;
   constructor(public userService: UserService) {
-    this.userId = JSON.parse(userService.getUser).uid;
+    this.userId = JSON.parse(userService.getUser)?.uid;
   }
 }

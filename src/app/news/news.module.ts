@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/compiler';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
@@ -12,7 +13,12 @@ import { DetailsNewsComponent } from './details-news/details-news.component';
 import { UpdateNewsComponent } from './update-news/update-news.component';
 
 @NgModule({
-  declarations: [NewsComponent, UploadNewsComponent, DetailsNewsComponent, UpdateNewsComponent],
+  declarations: [
+    NewsComponent,
+    UploadNewsComponent,
+    DetailsNewsComponent,
+    UpdateNewsComponent,
+  ],
   imports: [
     CommonModule,
     NewsRoutingModule,

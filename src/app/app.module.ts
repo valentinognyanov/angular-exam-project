@@ -20,6 +20,7 @@ import { UserService } from './user/user.service';
 import { NewsService } from './news/news.service';
 
 import { environment } from '../environments/environment';
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/compiler';
 
 @NgModule({
   declarations: [AppComponent, HomeComponent, AboutComponent],
@@ -36,7 +37,6 @@ import { environment } from '../environments/environment';
     NewsModule,
     BrowserAnimationsModule,
   ],
-
   providers: [UserService, NewsService],
   bootstrap: [AppComponent],
 })
