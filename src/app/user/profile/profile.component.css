@@ -1,4 +1,4 @@
-.profile-container {
+.profile-posts {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -11,7 +11,7 @@
     rgba(196, 196, 196, 1) 100%
   );
   border-radius: 3em;
-  width: 40%;
+  width: 60%;
   margin: 0 auto;
   border: 1px solid rgb(64, 103, 186);
   box-shadow: 5px 5px 5px rgb(70, 70, 70);
@@ -37,4 +37,32 @@
 
 .edit-btn a:hover {
   background: rgb(64, 103, 186);
+}
+
+.title {
+  color: rgb(64, 103, 186);
+  background-color: #fff;
+  text-align: center;
+  border-radius: 2em;
+  box-shadow: 5px 5px 5px rgb(70, 70, 70);
+}
+
+.card  {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 0.5em;
+  padding: 0.5em;
+}
+
+.btns button {
+  border-radius: 0.3em;
+  padding: 0.2em;
+  color: rgb(64, 103, 186);
+  cursor: pointer;
+}
+
+.btns button:hover {
+  color: #fff;
+  background-color: rgb(64, 103, 186);
 }

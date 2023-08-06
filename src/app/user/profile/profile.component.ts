@@ -15,7 +15,7 @@ import { USER_KEY } from 'src/app/shared/constants';
 })
 export class ProfileComponent {
   news!: News[];
-  authorEmail = JSON.parse(localStorage.getItem(USER_KEY) as any).email;
+  currentUser = JSON.parse(localStorage.getItem(USER_KEY) as any);
   routeUser: any;
   users!: any;
 
@@ -24,6 +24,7 @@ export class ProfileComponent {
     public angularFirestore: AngularFirestore,
     private route: ActivatedRoute
   ) {
+    
     this.newsService.getAllNews().subscribe((res) => {
       this.news = res.map((n) => {
         return {
@@ -47,9 +48,7 @@ export class ProfileComponent {
       .doc(userId)
       .valueChanges()
       .subscribe((user) => (this.routeUser = user));
-  }
+    console.log(this.routeUser);
 
-  get currentUser() {
-    return JSON.parse(localStorage.getItem(USER_KEY) as any);
   }
 }

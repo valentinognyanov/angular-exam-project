@@ -1,13 +1,118 @@
 <div class="profile-container">
   <ng-container *ngFor="let user of users">
-    <ng-container>
-      <h1>
-        {{
-          authorEmail.split("").shift().toUpperCase() +
-            authorEmail.split("@")[0].substring(1)
-        }}'s profile
+    <ng-container *ngIf="routeUser && user.email === routeUser.email">
+      <h1 class="title" style="text-align: center">
+        {{ user.fullName }}'s profile<br>
+        {{ user.email }}
       </h1>
+
+      <section class="profile-posts">
+        <ng-container
+          *ngIf="routeUser && routeUser.email !== currentUser.email"
+        >
+          <div *ngIf="!!user.news == false && !!user.upvotes == false">
+            <h2 class="title">
+              {{ user.fullName.split(" ")[0] }} hasn't upvote or published
+              anything yet.
+            </h2>
+          </div>
+          <div *ngIf="!!user.news == false && !!user.upvotes == true">
+            <h2 class="title">
+              {{ user.fullName.split(" ")[0] }} hasn't published anything yet.
+            </h2>
+          </div>
+          <div *ngIf="!!user.news == true">
+            <h2 class="title">{{ user.fullName.split(" ")[0] }}'s published news.</h2>
+
+            <ng-container *ngFor="let cNews of news">
+              <div class="card" *ngIf="cNews.author == routeUser.email">
+                <header>
+                  <h3>{{ cNews.title }}</h3>
+                </header>
+
+                <div class="btns">
+                  <button routerLink="/news/{{ cNews.id }}">
+                    Read
+                  </button>
+                </div>
+              </div>
+            </ng-container>
+          </div>
+
+          <div
+            class="upvotes-news"
+            *ngIf="!!user.news == true && !!user.upvotes == false"
+          >
+            <h2 class="title">
+              {{ user.fullName.split(" ")[0] }} hasn't upvote anything yet.
+            </h2>
+          </div>
+          <div class="upvotes-news" *ngIf="!!user.upvotes == true">
+            <h2 class="title">{{ user.fullName.split(" ")[0] }}'s upvoted news.</h2>
+            <ng-container *ngFor="let cNews of news">
+              <div class="card" *ngIf="cNews.upvotes && cNews.upvotes.includes(user.email)">
+                <header>
+                  <h3>{{ cNews.title }}</h3>
+                </header>
+                <div class="btns">
+                  <button routerLink="/news/{{ cNews.id }}">
+                    Read
+                  </button>
+                </div>
+              </div>
+            </ng-container>
+          </div>
+        </ng-container>
+
+        <ng-container *ngIf="routeUser.email === currentUser.email">
+          <div *ngIf="!!user.news == false && !!user.upvotes == false">
+            <h2 class="title">You haven't upvoted or published anything yet.</h2>
+          </div>
+          <div
+            class="uploaded-news"
+            *ngIf="!!user.news == false && !!user.upvotes == true"
+          >
+            <h2 class="title">You haven't published anything yet.</h2>
+          </div>
+          <div class="uploaded-news" *ngIf="!!user.news == true">
+            <h2 class="title">Your published news.</h2>
+            <ng-container *ngFor="let cNews of news">
+              <div class="card" *ngIf="cNews.author == routeUser.email">
+                <header>
+                  <h3>{{ cNews.title }}</h3>
+                </header>
+                <div class="btns">
+                  <button routerLink="/news/{{ cNews.id }}">
+                    Read
+                  </button>
+                </div>
+              </div>
+            </ng-container>
+          </div>
+
+          <div
+            class="upvoted-news"
+            *ngIf="!!user.news == true && !!user.upvotes == false"
+          >
+            <h2 class="title">You haven't upvoted anything yet.</h2>
+          </div>
+          <div class="upvoted-news" *ngIf="!!user.upvotes == true">
+            <h2 class="title">Your upvoted news.</h2>
+            <ng-container *ngFor="let cNews of news">
+              <div class="card" *ngIf="cNews.upvotes && cNews.upvotes.includes(user.email)">
+                <header>
+                  <h3>{{ cNews.title }}</h3>
+                </header>
+                <div class="btns">
+                  <button routerLink="/news/{{ cNews.id }}">
+                    Read
+                  </button>
+                </div>
+              </div>
+            </ng-container>
+          </div>
+        </ng-container>
+      </section>
     </ng-container>
   </ng-container>
-  <h1>hello</h1>
 </div>
