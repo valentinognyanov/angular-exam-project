@@ -5,8 +5,8 @@ import { AngularFirestore } from '@angular/fire/compat/firestore';
 
 import { UserService } from 'src/app/user/user.service';
 
-import { User } from 'src/app/types/user';
-import { News } from 'src/app/types/news';
+import { User } from 'src/app/types/user.model';
+import { News } from 'src/app/types/news.model';
 
 import { USER_KEY } from 'src/app/shared/constants';
 
