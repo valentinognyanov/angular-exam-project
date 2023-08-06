@@ -69,7 +69,7 @@
         <ng-container
           *ngIf="news.author === currUserEmail && user.email === currUserEmail"
         >
-          <div class="example-button-row">
+          <div class="update-delete-btns">
             <button (click)="updateNews()">Update</button>
             <button (click)="deleteNews(user.id)">Delete</button>
           </div>
