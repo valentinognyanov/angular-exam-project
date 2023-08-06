@@ -1,16 +1,26 @@
 .cards-container {
   display: flex;
   flex-direction: row;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
+  flex-wrap: wrap;
+
   gap: 2em;
 }
 
 .news-card {
-    display: flex;
-    flex-direction: column;
-    max-width: 14em;
-    max-height: 12em;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #000;
+  border-radius: 1em;
+  flex: 0 1 30%;
+}
+
+.news-card button {
+  border-radius: 1em;
+  font-size: 1.2em;
+  color: rgb(64, 103, 186);
+  cursor: pointer;
 }
 
 h1 {

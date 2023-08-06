@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 
 import { NewsService } from '../news.service';
 
-import { News } from 'src/app/types/news';
+import { News } from 'src/app/types/news.model';
 
 @Component({
   selector: 'app-news',
