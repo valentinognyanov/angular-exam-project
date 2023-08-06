@@ -5,7 +5,6 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { ProfileComponent } from './profile/profile.component';
 import { HomeComponent } from '../home/home.component';
-import { UpdateProfileComponent } from './update-profile/update-profile.component';
 
 import { IsLoggedOutGuard } from '../guards/is-logged-out.guard';
 import { IsLoggedInGuard } from '../guards/is-logged-in.guard';
@@ -22,18 +21,13 @@ const routes: Routes = [
     canActivate: [IsLoggedOutGuard],
   },
   {
-    path: 'profile',
+    path: 'user/:id',
     component: ProfileComponent,
     canActivate: [IsLoggedInGuard],
   },
   {
     path: 'logout',
     component: HomeComponent,
-  },
-  {
-    path: 'update-profile',
-    component: UpdateProfileComponent,
-    canActivate: [IsLoggedInGuard],
   },
 ];
 
