@@ -20,10 +20,9 @@ import { UserService } from './user/user.service';
 import { NewsService } from './news/news.service';
 
 import { environment } from '../environments/environment';
-import { NewsComponent } from './news/news/news.component';
 
 @NgModule({
-  declarations: [AppComponent, HomeComponent, AboutComponent, NewsComponent],
+  declarations: [AppComponent, HomeComponent, AboutComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
