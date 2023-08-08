@@ -1,9 +1,10 @@
 {
-  "hosting": [
-    {
-      "target": "my-exam-project",
-      "source": ".",
-      "frameworksBackend": {}
-    }
-  ]
+  "hosting": {
+    "public": "dist/my-exam-project",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ]
+  }
 }
