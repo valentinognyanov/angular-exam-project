@@ -82,6 +82,10 @@ p.error {
   border: 1px solid red;
 }
 
+.input-error.ng-untouched {
+  border: none;
+}
+
 .form-container button:disabled {
   color: rgba(16, 16, 16, 0.3);
 }
@@ -92,6 +96,7 @@ p.error {
   border-radius: 1em;
   color: rgb(64, 103, 186);
   font-size: 1.2em;
+  cursor: pointer;
 }
 
 p.hint {
