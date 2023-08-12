@@ -34,7 +34,7 @@ export class LoginComponent {
 
     await this.userService.login(email!, password!);
 
-    if (localStorage.getItem(USER_KEY)) this.router.navigate(['/']);
+    if (localStorage.getItem(USER_KEY)) this.router.navigate(['news']);
 
     // this.userService.login(email!, password!).subscribe(() => {
     //   this.router.navigate(['/']);

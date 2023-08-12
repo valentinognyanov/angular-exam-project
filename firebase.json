@@ -1,6 +1,6 @@
 {
   "hosting": {
-    "public": "dist/my-exam-project",
+    "public": "dist",
     "ignore": [
       "firebase.json",
       "**/.*",

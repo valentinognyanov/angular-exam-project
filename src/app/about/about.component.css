@@ -3,8 +3,9 @@
   flex-direction: column-reverse;
   justify-content: center;
   align-items: center;
-  margin-top: 10em;
+  margin-top: 6em;
   gap: 0.5em;
+  height: 68vh;
 }
 
 .about-page h3 {

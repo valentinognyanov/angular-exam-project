@@ -114,6 +114,6 @@ export class UploadNewsComponent {
   onSubmit(uid: any) {
     if (uid !== undefined) this.uid = uid;
     this.uploadNews(this.uploadNewsForm.value, this.uid);
-    this.router.navigate(['']);
+    this.router.navigate(['news']);
   }
 }

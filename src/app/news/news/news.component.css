@@ -5,6 +5,7 @@
   align-items: center;
   flex-wrap: wrap;
   gap: 2em;
+  height: 150vh;
 }
 
 /* .news-card {

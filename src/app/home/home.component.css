@@ -5,6 +5,7 @@
   flex-direction: column;
   gap: 7em;
   margin-top: 6em;
+  height: 68vh;
 }
 
 .welcome button {
@@ -24,7 +25,7 @@
 
 .welcome-title {
   background-color: #fff;
-  width: 80%;
+  width: 86%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -34,7 +35,7 @@
 
 .welcome-title p {
   font-family: "Playfair Display", serif;
-  font-size: 5em;
+  font-size: 4em;
   text-align: center;
   margin-top: 50px;
   color: rgb(64, 103, 186);

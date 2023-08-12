@@ -51,7 +51,7 @@ export class RegisterComponent {
 
     await this.userService.register(fullName!, email!, password!);
 
-    if (localStorage.getItem(USER_KEY)) this.router.navigate(['/']);
+    if (localStorage.getItem(USER_KEY)) this.router.navigate(['news']);
 
     this.angularFirestore
       .collection('users')
